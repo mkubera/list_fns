@@ -11,3 +11,7 @@
 ## How to test?
 
 Just run `mix test` and viola! :)
+
+## How to print docs inside iex?
+
+Run `h ListFns.get_names_of_adults` (where `h` stands for "help").
