@@ -7,3 +7,7 @@
 3. Want your own `people`? No prob.
    - First, define them: `people = [%{name: "Bob", age: 30}, %{name: "Bill", age: 18}, %{name: "Ben", age: 45}]`
    - Then, run them through the fn, like so: `ListFns.get_names_of_adults(people)`
+
+## How to test?
+
+Just run `mix test` and viola! :)
