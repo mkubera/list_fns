@@ -1,9 +1,30 @@
 defmodule ListFns do
-  @default_people [%{name: "Bob", age: 30}, %{name: "Bill", age: 18}]
-
   @moduledoc """
   Documentation for ListFns.
   """
+
+  @default_people [
+    %{name: "Bob", age: 30},
+    %{name: "Bill", age: 18},
+    %{name: "John", age: 12},
+    %{name: "Bruce", age: 21}
+  ]
+
+  @doc """
+
+  """
+  def how_long(people \\ @default_people, chosen_name \\ "Bill") do
+    person = get_person(people, chosen_name)
+    case is_adult?(person) do
+      true -> say_response("adult", person)
+      false -> say_response("kid", person)
+    end
+  end
+
+  defp get_person(people, chosen_name), do: Enum.find(people, fn %{name: name} -> name == chosen_name end)
+  defp is_adult?(%{age: age}), do: age - 21 <= 0
+  defp say_response("adult", %{name: name, age: age}), do: "#{name} has #{21 - age} years left to adulthood."
+  defp say_response("kid", %{name: name}), do: "#{name} is already an adult."
 
   @doc """
   Get names of adults who are older than 21.
