@@ -13,6 +13,18 @@ defmodule ListFns do
   @doc """
 
   """
+  def count_adults(people \\ @default_people) do
+    Enum.reduce(people, 0, fn person, acc ->
+      case is_adult?(person) do
+        true -> acc + 1
+        false -> acc
+      end
+    end)
+  end
+
+  @doc """
+
+  """
   def how_long(people \\ @default_people, chosen_name \\ "Bill") do
     person = get_person(people, chosen_name)
     case is_adult?(person) do
@@ -22,9 +34,9 @@ defmodule ListFns do
   end
 
   defp get_person(people, chosen_name), do: Enum.find(people, fn %{name: name} -> name == chosen_name end)
-  defp is_adult?(%{age: age}), do: age - 21 <= 0
-  defp say_response("adult", %{name: name, age: age}), do: "#{name} has #{21 - age} years left to adulthood."
-  defp say_response("kid", %{name: name}), do: "#{name} is already an adult."
+  defp is_adult?(%{age: age}), do: age >= 21
+  defp say_response("adult", %{name: name}), do: "#{name} is already an adult."
+  defp say_response("kid", %{name: name, age: age}), do: "#{name} has #{21 - age} years left to adulthood."
 
   @doc """
   Get names of adults who are older than 21.
