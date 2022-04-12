@@ -33,7 +33,26 @@ defmodule ListFns do
     end
   end
 
-  defp get_person(people, chosen_name), do: Enum.find(people, fn %{name: name} -> name == chosen_name end)
+  @doc false
+  def get_person(people, chosen_name), do: Enum.find(people, fn %{name: name} -> name == chosen_name end)
+
+  # TODO! :D
+  # CRUD 💪
+
+  @doc false
+  def add_person(people, data) do
+
+  end
+  @doc false
+  def edit_person(people, data) do
+
+  end
+  @doc false
+  def delete_person(people, data) do
+
+  end
+
+
   defp is_adult?(%{age: age}), do: age >= 21
   defp say_response("adult", %{name: name}), do: "#{name} is already an adult."
   defp say_response("kid", %{name: name, age: age}), do: "#{name} has #{21 - age} years left to adulthood."
